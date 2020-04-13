@@ -1,0 +1,175 @@
+openapi: 3.0.1
+info:
+  title: News Api
+  description: 'News'
+  version: 1.0.0
+externalDocs:
+  description: API Root
+  url: http://newsapi.org
+servers:
+- url: http://newsapi.org
+tags:
+- name: getNews
+  description: Get News
+paths:
+  /v2/everything:
+    get:
+      tags:
+      - news
+      summary: Get News
+      operationId: getNews
+      parameters:
+        # - name: country
+        #   in: query
+        #   description: 'The 2-letter ISO 3166-1 code of the country you want to get headlines for. Possible options: ae ar at au be bg br ca ch cn co cu cz de e fr gb gr hk hu id ie il in it jp kr lt lv ma mx my ng nl no nz ph pl pt ro rs ru sa se sg si sk th tr tw ua us ve za . Note you cant mix this param with the sources param.'
+        #   required: true
+        #   schema:
+        #     type: string
+            
+        - name: apiKey
+          in: query
+          description: Your API key. Alternatively you can provide this via the X-Api-Key HTTP header.
+          required: true
+          schema:
+            type: string
+            
+        - name: q
+          in: query
+          description: Keywords or phrases to search for in the article title and body.
+          required: false
+          schema:
+            type: string
+            
+        - name: qInTitle
+          in: query
+          description: Keywords or phrases to search for in the article title only.
+          required: false
+          schema:
+            type: string
+            
+        - name: sources
+          in: query
+          description: 'A comma-seperated string of identifiers for the news sources or blogs you want headlines from. Use the /sources endpoint to locate these programmatically or look at the sources index. Note: you cant mix this param with the country or category params.'
+          required: false
+          schema:
+            type: string
+        
+        - name: domains
+          in: query
+          description: 'A comma-seperated string of domains (eg bbc.co.uk, techcrunch.com, engadget.com) to restrict the search to.'
+          required: false
+          schema:
+            type: string
+        
+        - name: excludeDomains
+          in: query
+          description: 'A comma-seperated string of domains (eg bbc.co.uk, techcrunch.com, engadget.com) to remove from the results.'
+          required: false
+          schema:
+            type: string
+            
+        - name: from
+          in: query
+          description: 'A date and optional time for the oldest article allowed. This should be in ISO 8601 format (e.g. 2020-04-13 or 2020-04-13T20:51:51) Default: the oldest according to your plan.'
+          required: false
+          schema:
+            type: string
+            
+        - name: to
+          in: query
+          description: 'A date and optional time for the newest article allowed. This should be in ISO 8601 format (e.g. 2020-04-13 or 2020-04-13T20:51:51) Default: the newest according to your plan.'
+          required: false
+          schema:
+            type: string
+            
+        - name: language
+          in: query
+          description: 'The 2-letter ISO-639-1 code of the language you want to get headlines for. Possible options: ardeenesfrheitnlnoptruseudzh. Default: all languages returned.'
+          required: false
+          schema:
+            type: string
+            
+        - name: sortBy
+          in: query
+          description: 'The order to sort the articles in. Possible options: relevancy, popularity, publishedAt. relevancy = articles more closely related to q come first. popularity = articles from popular sources and publishers come first. publishedAt = newest articles come first. Default: publishedAt'
+          required: false
+          schema:
+            type: string
+
+        - name: pageSize
+          in: query
+          description: The number of results to return per page (request). 20 is the default, 100 is the maximum.
+          required: false
+          schema:
+            type: integer
+            
+        - name: page
+          in: query
+          description: Use this to page through the results if the total results found is greater than the page size.
+          required: false
+          schema:
+            type: integer   
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsList'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+components:
+  schemas:
+    NewsList:
+      type: object
+      properties:
+        status:
+          type: string
+        totalResults:
+          type: integer
+        articles:
+          type: array
+          items:
+            $ref: "#/components/schemas/articles"
+          
+    articles:
+      type: object
+      properties:
+        source:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        author:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        urlToImage:
+          type: string
+        publishedAt:
+          type: string
+        content:
+          type: string
+          
+    ErrorModel:
+      type: object
+      required:
+      - message
+      - code
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+          minimum: 100
+          maximum: 600

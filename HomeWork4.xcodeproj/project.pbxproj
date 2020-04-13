@@ -14,10 +14,16 @@
 		30510F162444D04300E2D688 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30510F152444D04300E2D688 /* Preview Assets.xcassets */; };
 		30510F192444D04300E2D688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30510F172444D04300E2D688 /* LaunchScreen.storyboard */; };
 		30510F232444D1DC00E2D688 /* NewsAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 30510F222444D1DC00E2D688 /* NewsAPI */; };
-		30510F272444D2DC00E2D688 /* ArticlesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F262444D2DC00E2D688 /* ArticlesModel.swift */; };
+		30510F272444D2DC00E2D688 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F262444D2DC00E2D688 /* ArticleModel.swift */; };
 		30510F2D2444D32C00E2D688 /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F2C2444D32C00E2D688 /* HelperExtensions.swift */; };
 		30510F302444D35100E2D688 /* ArticlesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F2F2444D35100E2D688 /* ArticlesService.swift */; };
 		30510F332444D37D00E2D688 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F322444D37D00E2D688 /* ServiceLocator.swift */; };
+		30510F3A2444F28400E2D688 /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F392444F28400E2D688 /* ArticlesViewModel.swift */; };
+		30510F3C2444F42B00E2D688 /* ArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F3B2444F42B00E2D688 /* ArticlesView.swift */; };
+		30510F3E2444F44500E2D688 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F3D2444F44500E2D688 /* ArticleView.swift */; };
+		30510F402444F67100E2D688 /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F3F2444F67100E2D688 /* ArticleRowView.swift */; };
+		30510F42244501D300E2D688 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F41244501D200E2D688 /* ArticleViewModel.swift */; };
+		30510F4424450BB900E2D688 /* openapi.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 30510F4324450BB900E2D688 /* openapi.yaml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +36,16 @@
 		30510F182444D04300E2D688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30510F1A2444D04300E2D688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30510F202444D07700E2D688 /* NewsAPI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NewsAPI; sourceTree = "<group>"; };
-		30510F262444D2DC00E2D688 /* ArticlesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesModel.swift; sourceTree = "<group>"; };
+		30510F262444D2DC00E2D688 /* ArticleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		30510F2C2444D32C00E2D688 /* HelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		30510F2F2444D35100E2D688 /* ArticlesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesService.swift; sourceTree = "<group>"; };
 		30510F322444D37D00E2D688 /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		30510F392444F28400E2D688 /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
+		30510F3B2444F42B00E2D688 /* ArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesView.swift; sourceTree = "<group>"; };
+		30510F3D2444F44500E2D688 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		30510F3F2444F67100E2D688 /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
+		30510F41244501D200E2D688 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
+		30510F4324450BB900E2D688 /* openapi.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = openapi.yaml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +121,7 @@
 		30510F252444D25300E2D688 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				30510F262444D2DC00E2D688 /* ArticlesModel.swift */,
+				30510F262444D2DC00E2D688 /* ArticleModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -142,6 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				30510F102444D04200E2D688 /* RootView.swift */,
+				30510F3B2444F42B00E2D688 /* ArticlesView.swift */,
+				30510F3F2444F67100E2D688 /* ArticleRowView.swift */,
+				30510F3D2444F44500E2D688 /* ArticleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,6 +164,8 @@
 		30510F352444D3D900E2D688 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				30510F392444F28400E2D688 /* ArticlesViewModel.swift */,
+				30510F41244501D200E2D688 /* ArticleViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -156,6 +173,7 @@
 		30510F362444D41600E2D688 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				30510F4324450BB900E2D688 /* openapi.yaml */,
 				30510F122444D04300E2D688 /* Assets.xcassets */,
 				30510F172444D04300E2D688 /* LaunchScreen.storyboard */,
 				30510F1A2444D04300E2D688 /* Info.plist */,
@@ -225,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30510F192444D04300E2D688 /* LaunchScreen.storyboard in Resources */,
+				30510F4424450BB900E2D688 /* openapi.yaml in Resources */,
 				30510F162444D04300E2D688 /* Preview Assets.xcassets in Resources */,
 				30510F132444D04300E2D688 /* Assets.xcassets in Resources */,
 			);
@@ -240,8 +259,13 @@
 				30510F302444D35100E2D688 /* ArticlesService.swift in Sources */,
 				30510F0D2444D04200E2D688 /* AppDelegate.swift in Sources */,
 				30510F0F2444D04200E2D688 /* SceneDelegate.swift in Sources */,
+				30510F3C2444F42B00E2D688 /* ArticlesView.swift in Sources */,
 				30510F2D2444D32C00E2D688 /* HelperExtensions.swift in Sources */,
-				30510F272444D2DC00E2D688 /* ArticlesModel.swift in Sources */,
+				30510F272444D2DC00E2D688 /* ArticleModel.swift in Sources */,
+				30510F402444F67100E2D688 /* ArticleRowView.swift in Sources */,
+				30510F3A2444F28400E2D688 /* ArticlesViewModel.swift in Sources */,
+				30510F3E2444F44500E2D688 /* ArticleView.swift in Sources */,
+				30510F42244501D300E2D688 /* ArticleViewModel.swift in Sources */,
 				30510F112444D04200E2D688 /* RootView.swift in Sources */,
 				30510F332444D37D00E2D688 /* ServiceLocator.swift in Sources */,
 			);

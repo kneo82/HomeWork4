@@ -13,18 +13,23 @@ open class NewsAPI {
     /**
      Get News
      
-     - parameter country: (query) The 2-letter ISO 3166-1 code of the country you want to get headlines for. Possible options: ae ar at au be bg br ca ch cn co cu cz de e fr gb gr hk hu id ie il in it jp kr lt lv ma mx my ng nl no nz ph pl pt ro rs ru sa se sg si sk th tr tw ua us ve za . Note you cant mix this param with the sources param. 
      - parameter apiKey: (query) Your API key. Alternatively you can provide this via the X-Api-Key HTTP header. 
-     - parameter q: (query) Keywords or a phrase to search for. (optional)
-     - parameter category: (query) The category you want to get headlines for. Possible options: business entertainment general health science sports technology . Note: you cant mix this param with the sources param. (optional)
+     - parameter q: (query) Keywords or phrases to search for in the article title and body. (optional)
+     - parameter qInTitle: (query) Keywords or phrases to search for in the article title only. (optional)
      - parameter sources: (query) A comma-seperated string of identifiers for the news sources or blogs you want headlines from. Use the /sources endpoint to locate these programmatically or look at the sources index. Note: you cant mix this param with the country or category params. (optional)
+     - parameter domains: (query) A comma-seperated string of domains (eg bbc.co.uk, techcrunch.com, engadget.com) to restrict the search to. (optional)
+     - parameter excludeDomains: (query) A comma-seperated string of domains (eg bbc.co.uk, techcrunch.com, engadget.com) to remove from the results. (optional)
+     - parameter from: (query) A date and optional time for the oldest article allowed. This should be in ISO 8601 format (e.g. 2020-04-13 or 2020-04-13T20:51:51) Default: the oldest according to your plan. (optional)
+     - parameter to: (query) A date and optional time for the newest article allowed. This should be in ISO 8601 format (e.g. 2020-04-13 or 2020-04-13T20:51:51) Default: the newest according to your plan. (optional)
+     - parameter language: (query) The 2-letter ISO-639-1 code of the language you want to get headlines for. Possible options: ardeenesfrheitnlnoptruseudzh. Default: all languages returned. (optional)
+     - parameter sortBy: (query) The order to sort the articles in. Possible options: relevancy, popularity, publishedAt. relevancy &#x3D; articles more closely related to q come first. popularity &#x3D; articles from popular sources and publishers come first. publishedAt &#x3D; newest articles come first. Default: publishedAt (optional)
      - parameter pageSize: (query) The number of results to return per page (request). 20 is the default, 100 is the maximum. (optional)
      - parameter page: (query) Use this to page through the results if the total results found is greater than the page size. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getNews(country: String, apiKey: String, q: String? = nil, category: String? = nil, sources: String? = nil, pageSize: Int? = nil, page: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: NewsList?,_ error: Error?) -> Void)) {
-        getNewsWithRequestBuilder(country: country, apiKey: apiKey, q: q, category: category, sources: sources, pageSize: pageSize, page: page).execute(apiResponseQueue) { result -> Void in
+    open class func getNews(apiKey: String, q: String? = nil, qInTitle: String? = nil, sources: String? = nil, domains: String? = nil, excludeDomains: String? = nil, from: String? = nil, to: String? = nil, language: String? = nil, sortBy: String? = nil, pageSize: Int? = nil, page: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: NewsList?,_ error: Error?) -> Void)) {
+        getNewsWithRequestBuilder(apiKey: apiKey, q: q, qInTitle: qInTitle, sources: sources, domains: domains, excludeDomains: excludeDomains, from: from, to: to, language: language, sortBy: sortBy, pageSize: pageSize, page: page).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -36,28 +41,38 @@ open class NewsAPI {
 
     /**
      Get News
-     - GET /v2/top-headlines
-     - parameter country: (query) The 2-letter ISO 3166-1 code of the country you want to get headlines for. Possible options: ae ar at au be bg br ca ch cn co cu cz de e fr gb gr hk hu id ie il in it jp kr lt lv ma mx my ng nl no nz ph pl pt ro rs ru sa se sg si sk th tr tw ua us ve za . Note you cant mix this param with the sources param. 
+     - GET /v2/everything
      - parameter apiKey: (query) Your API key. Alternatively you can provide this via the X-Api-Key HTTP header. 
-     - parameter q: (query) Keywords or a phrase to search for. (optional)
-     - parameter category: (query) The category you want to get headlines for. Possible options: business entertainment general health science sports technology . Note: you cant mix this param with the sources param. (optional)
+     - parameter q: (query) Keywords or phrases to search for in the article title and body. (optional)
+     - parameter qInTitle: (query) Keywords or phrases to search for in the article title only. (optional)
      - parameter sources: (query) A comma-seperated string of identifiers for the news sources or blogs you want headlines from. Use the /sources endpoint to locate these programmatically or look at the sources index. Note: you cant mix this param with the country or category params. (optional)
+     - parameter domains: (query) A comma-seperated string of domains (eg bbc.co.uk, techcrunch.com, engadget.com) to restrict the search to. (optional)
+     - parameter excludeDomains: (query) A comma-seperated string of domains (eg bbc.co.uk, techcrunch.com, engadget.com) to remove from the results. (optional)
+     - parameter from: (query) A date and optional time for the oldest article allowed. This should be in ISO 8601 format (e.g. 2020-04-13 or 2020-04-13T20:51:51) Default: the oldest according to your plan. (optional)
+     - parameter to: (query) A date and optional time for the newest article allowed. This should be in ISO 8601 format (e.g. 2020-04-13 or 2020-04-13T20:51:51) Default: the newest according to your plan. (optional)
+     - parameter language: (query) The 2-letter ISO-639-1 code of the language you want to get headlines for. Possible options: ardeenesfrheitnlnoptruseudzh. Default: all languages returned. (optional)
+     - parameter sortBy: (query) The order to sort the articles in. Possible options: relevancy, popularity, publishedAt. relevancy &#x3D; articles more closely related to q come first. popularity &#x3D; articles from popular sources and publishers come first. publishedAt &#x3D; newest articles come first. Default: publishedAt (optional)
      - parameter pageSize: (query) The number of results to return per page (request). 20 is the default, 100 is the maximum. (optional)
      - parameter page: (query) Use this to page through the results if the total results found is greater than the page size. (optional)
      - returns: RequestBuilder<NewsList> 
      */
-    open class func getNewsWithRequestBuilder(country: String, apiKey: String, q: String? = nil, category: String? = nil, sources: String? = nil, pageSize: Int? = nil, page: Int? = nil) -> RequestBuilder<NewsList> {
-        let path = "/v2/top-headlines"
+    open class func getNewsWithRequestBuilder(apiKey: String, q: String? = nil, qInTitle: String? = nil, sources: String? = nil, domains: String? = nil, excludeDomains: String? = nil, from: String? = nil, to: String? = nil, language: String? = nil, sortBy: String? = nil, pageSize: Int? = nil, page: Int? = nil) -> RequestBuilder<NewsList> {
+        let path = "/v2/everything"
         let URLString = OpenAPIClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "country": country.encodeToJSON(), 
             "apiKey": apiKey.encodeToJSON(), 
             "q": q?.encodeToJSON(), 
-            "category": category?.encodeToJSON(), 
+            "qInTitle": qInTitle?.encodeToJSON(), 
             "sources": sources?.encodeToJSON(), 
+            "domains": domains?.encodeToJSON(), 
+            "excludeDomains": excludeDomains?.encodeToJSON(), 
+            "from": from?.encodeToJSON(), 
+            "to": to?.encodeToJSON(), 
+            "language": language?.encodeToJSON(), 
+            "sortBy": sortBy?.encodeToJSON(), 
             "pageSize": pageSize?.encodeToJSON(), 
             "page": page?.encodeToJSON()
         ])

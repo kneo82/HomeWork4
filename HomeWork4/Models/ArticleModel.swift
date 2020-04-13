@@ -8,12 +8,6 @@
 
 import Foundation
 
-public struct ArticlesModel: Codable {
-    let pageSize = 20
-    public var page = 0
-    public var articles: [ArticleModel]?
-}
-
 public struct ArticleModel: Codable {
     public var author: String?
     public var title: String?
