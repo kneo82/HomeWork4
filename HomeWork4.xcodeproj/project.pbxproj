@@ -24,6 +24,14 @@
 		30510F402444F67100E2D688 /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F3F2444F67100E2D688 /* ArticleRowView.swift */; };
 		30510F42244501D300E2D688 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30510F41244501D200E2D688 /* ArticleViewModel.swift */; };
 		30510F4424450BB900E2D688 /* openapi.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 30510F4324450BB900E2D688 /* openapi.yaml */; };
+		30E59A972445DEA50043555F /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E59A962445DEA50043555F /* URLImage.swift */; };
+		30E59A992445E06A0043555F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E59A982445E06A0043555F /* ImageCache.swift */; };
+		30E59A9C244608110043555F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E59A9B244608110043555F /* Reachability.swift */; };
+		30E59A9E24460AC40043555F /* ArticlesListCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E59A9D24460AC40043555F /* ArticlesListCache.swift */; };
+		30E59AA0244633670043555F /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E59A9F244633670043555F /* SettingView.swift */; };
+		30E59AA22446338B0043555F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E59AA12446338B0043555F /* SettingViewModel.swift */; };
+		30E59AA4244633A60043555F /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E59AA3244633A60043555F /* SettingModel.swift */; };
+		30E59AA6244634CA0043555F /* SettingSaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E59AA5244634CA0043555F /* SettingSaveService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +54,14 @@
 		30510F3F2444F67100E2D688 /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
 		30510F41244501D200E2D688 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		30510F4324450BB900E2D688 /* openapi.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = openapi.yaml; sourceTree = "<group>"; };
+		30E59A962445DEA50043555F /* URLImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
+		30E59A982445E06A0043555F /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		30E59A9B244608110043555F /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		30E59A9D24460AC40043555F /* ArticlesListCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListCache.swift; sourceTree = "<group>"; };
+		30E59A9F244633670043555F /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		30E59AA12446338B0043555F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		30E59AA3244633A60043555F /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		30E59AA5244634CA0043555F /* SettingSaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSaveService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +98,9 @@
 			children = (
 				30510F0C2444D04200E2D688 /* AppDelegate.swift */,
 				30510F0E2444D04200E2D688 /* SceneDelegate.swift */,
+				30E59A9A2445E18B0043555F /* New Group */,
 				30510F242444D22300E2D688 /* APIs */,
+				30E59A952445DE880043555F /* UIComponents */,
 				30510F312444D37D00E2D688 /* ServiceLocator */,
 				30510F2E2444D34800E2D688 /* Services */,
 				30510F2B2444D32300E2D688 /* Extensions */,
@@ -122,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				30510F262444D2DC00E2D688 /* ArticleModel.swift */,
+				30E59AA3244633A60043555F /* SettingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,6 +157,10 @@
 			isa = PBXGroup;
 			children = (
 				30510F2F2444D35100E2D688 /* ArticlesService.swift */,
+				30E59A9B244608110043555F /* Reachability.swift */,
+				30E59A982445E06A0043555F /* ImageCache.swift */,
+				30E59A9D24460AC40043555F /* ArticlesListCache.swift */,
+				30E59AA5244634CA0043555F /* SettingSaveService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -154,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				30510F102444D04200E2D688 /* RootView.swift */,
+				30E59A9F244633670043555F /* SettingView.swift */,
 				30510F3B2444F42B00E2D688 /* ArticlesView.swift */,
 				30510F3F2444F67100E2D688 /* ArticleRowView.swift */,
 				30510F3D2444F44500E2D688 /* ArticleView.swift */,
@@ -166,6 +190,7 @@
 			children = (
 				30510F392444F28400E2D688 /* ArticlesViewModel.swift */,
 				30510F41244501D200E2D688 /* ArticleViewModel.swift */,
+				30E59AA12446338B0043555F /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -179,6 +204,21 @@
 				30510F1A2444D04300E2D688 /* Info.plist */,
 			);
 			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		30E59A952445DE880043555F /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				30E59A962445DEA50043555F /* URLImage.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		30E59A9A2445E18B0043555F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,14 +296,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E59A992445E06A0043555F /* ImageCache.swift in Sources */,
 				30510F302444D35100E2D688 /* ArticlesService.swift in Sources */,
 				30510F0D2444D04200E2D688 /* AppDelegate.swift in Sources */,
 				30510F0F2444D04200E2D688 /* SceneDelegate.swift in Sources */,
 				30510F3C2444F42B00E2D688 /* ArticlesView.swift in Sources */,
 				30510F2D2444D32C00E2D688 /* HelperExtensions.swift in Sources */,
 				30510F272444D2DC00E2D688 /* ArticleModel.swift in Sources */,
+				30E59AA22446338B0043555F /* SettingViewModel.swift in Sources */,
+				30E59AA4244633A60043555F /* SettingModel.swift in Sources */,
 				30510F402444F67100E2D688 /* ArticleRowView.swift in Sources */,
+				30E59A9C244608110043555F /* Reachability.swift in Sources */,
+				30E59AA0244633670043555F /* SettingView.swift in Sources */,
+				30E59A9E24460AC40043555F /* ArticlesListCache.swift in Sources */,
+				30E59A972445DEA50043555F /* URLImage.swift in Sources */,
 				30510F3A2444F28400E2D688 /* ArticlesViewModel.swift in Sources */,
+				30E59AA6244634CA0043555F /* SettingSaveService.swift in Sources */,
 				30510F3E2444F44500E2D688 /* ArticleView.swift in Sources */,
 				30510F42244501D300E2D688 /* ArticleViewModel.swift in Sources */,
 				30510F112444D04200E2D688 /* RootView.swift in Sources */,

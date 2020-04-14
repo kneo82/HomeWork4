@@ -13,6 +13,9 @@ public struct ArticleModel: Codable {
     public var title: String?
     public var description: String?
     public var url: String?
+    public var urlToImage: String?
+    public var publishedAt: String?
+    public var content: String?
 }
 
 extension ArticleModel: Identifiable {

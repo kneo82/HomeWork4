@@ -10,18 +10,18 @@ import SwiftUI
 
 struct ArticlesView: View {
     @EnvironmentObject var viewModel: ArticlesViewModel
-
+    
     var body: some View {
         NavigationView {
             List(viewModel.articles) { item in
                 NavigationLink(destination: ArticleView(item: ArticleViewModel(article: item))) {
-                    ArticleRowView(item: ArticleViewModel(article: item))
+                    ArticleRowView(item: ArticleViewModel(article: item, isShowImage: self.viewModel.isShowImages))
                 }
-                    .onAppear() {
-                            if self.viewModel.articles.isLast(item) {
-                                self.viewModel.loadPage()
-                            }
+                .onAppear() {
+                    if self.viewModel.articles.isLast(item) {
+                        self.viewModel.loadPage()
                     }
+                }
             }
             .navigationBarTitle("News")
             .onAppear() {

@@ -8,9 +8,33 @@
 
 import SwiftUI
 
+enum Tab: Hashable {
+    case news
+    case settings
+}
+
 struct RootView: View {
+    @State var selectedTab: Tab = .news
+    @EnvironmentObject var settingViewModel: SettingViewModel
+    
     var body: some View {
-        ArticlesView()
+        TabView(selection: $selectedTab) {
+            ArticlesView()
+                .font(.title)
+                .tabItem({
+                    Image(systemName: "text.bubble")
+                    Text("News")
+                })
+                .tag(Tab.news)
+            
+            SettingView(viewModel: settingViewModel)
+                .font(.title)
+                .tabItem({
+                    Image(systemName: "gear")
+                    Text("Settings")
+                })
+                .tag(Tab.settings)
+        }
     }
 }
 

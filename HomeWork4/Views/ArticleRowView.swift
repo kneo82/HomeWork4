@@ -12,7 +12,10 @@ struct ArticleRowView: View {
     let item: ArticleViewModel
     
     var body: some View {
-        VStack {
+        HStack(spacing: 10) {
+            URLImage(imageUrl: item.urlToImage)
+                .frame(width: 100, height: 100 )
+            
             Text(item.title)
                 .font(.title)
                 .foregroundColor(.blue)

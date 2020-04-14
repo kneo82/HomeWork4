@@ -7,20 +7,51 @@
 //
 
 import Foundation
+import Combine
 
 final class ArticlesViewModel: ObservableObject {
-    
-    let pageSize = 10
-    
     var page = 0
     var totalResults = 0
 
     var locator: ServiceLocator?
     
+    var isShowImages: Bool {
+        return settingModel.model.showImages
+    }
+    
     @Published private(set) var articles: [ArticleModel] = [ArticleModel]()
-
-    init(locator: ServiceLocator?) {
+    
+    var settingModel: SettingViewModel
+    
+    private var querySubscriber: AnyCancellable? = nil
+    private var pageSubscriber: AnyCancellable? = nil
+    private var imageSubscriber: AnyCancellable? = nil
+    
+    init(locator: ServiceLocator?, settingModel: SettingViewModel) {
         self.locator = locator
+        self.settingModel = settingModel
+
+        self.subscribe()
+    }
+    
+    func subscribe() {
+        querySubscriber = self.settingModel.$query.sink(receiveValue: { [weak self ] _ in
+            self?.reload()
+        })
+        
+        pageSubscriber = self.settingModel.$pageSize.sink(receiveValue: { _ in
+            self.reload()
+        })
+        
+        imageSubscriber = self.settingModel.$showImages.sink(receiveValue: { _ in
+            self.reload()
+        })
+    }
+    
+    func reload() {
+        self.page = 0
+        self.articles = [ArticleModel]()
+        self.loadPage()
     }
     
     func loadPage() {
@@ -31,7 +62,7 @@ final class ArticlesViewModel: ObservableObject {
         page += 1
         
         if let service = locator?.getServiceOf(ArticlesService.self)  {
-            service.getArticles(q: "bitcoin", pageSize: pageSize, page: page) { articles, totalResults in
+            service.getArticles(q: settingModel.model.queryString, pageSize: settingModel.model.pageSize, page: page) { articles, totalResults in
                 self.articles.append(contentsOf: articles)
                 self.totalResults = totalResults
             }

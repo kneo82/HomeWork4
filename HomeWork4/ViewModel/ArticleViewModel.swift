@@ -11,7 +11,9 @@ import Foundation
 final class ArticleViewModel: ObservableObject {
     private var article: ArticleModel?
     
-    init(article: ArticleModel?) {
+    @Published var isShowImage = true
+    
+    init(article: ArticleModel?, isShowImage: Bool = true) {
         self.article = article
     }
     
@@ -30,5 +32,16 @@ final class ArticleViewModel: ObservableObject {
     var author: String {
         article?.author ?? ""
     }
+    
+    var urlToImage: String {
+        article?.urlToImage ?? ""
+    }
+    
+    var publishedAt: String {
+        article?.publishedAt ?? ""
+    }
+    
+    var content: String {
+        article?.content ?? ""
+    }
 }
-
