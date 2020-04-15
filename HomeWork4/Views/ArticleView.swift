@@ -31,7 +31,7 @@ struct ArticleView: View {
             
             Spacer()
         }
-            .padding()
+        .padding()
     }
 }
 

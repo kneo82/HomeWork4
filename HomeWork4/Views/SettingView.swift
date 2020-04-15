@@ -22,7 +22,7 @@ struct SettingView: View {
                 TextField("Page Size", text: $viewModel.pageSize)
             }
             .keyboardType(.numberPad)
-
+            
             Toggle(isOn: $viewModel.showImages) {
                 Text("Show Images")
             }

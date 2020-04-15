@@ -9,7 +9,6 @@
 import Foundation
 import SystemConfiguration
 
-
 let ReachabilityStatusChangedNotification = "ReachabilityStatusChangedNotification"
 
 enum ReachabilityType: CustomStringConvertible {
@@ -61,7 +60,6 @@ public class Reach {
         return ReachabilityStatus(reachabilityFlags: flags)
     }
     
-    
     func monitorReachabilityChanges() {
         let host = "google.com"
         var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
@@ -74,11 +72,10 @@ public class Reach {
                                             object: nil,
                                             userInfo: ["Status": status.description])
             
-            }, &context)
+        }, &context)
         
         SCNetworkReachabilityScheduleWithRunLoop(reachability, CFRunLoopGetMain(), RunLoop.Mode.common as CFString)
     }
-    
 }
 
 extension ReachabilityStatus {

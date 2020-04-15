@@ -21,7 +21,6 @@ public final class ArticleListCache {
     }()
     
     private init() {
-        
     }
     
     public func getArticles(q: String, pageSize: Int, page: Int, handler: @escaping (_ articles: [ArticleModel], _ totalResults: Int) -> Void) {

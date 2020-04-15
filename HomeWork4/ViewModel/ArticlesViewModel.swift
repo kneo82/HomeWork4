@@ -10,19 +10,19 @@ import Foundation
 import Combine
 
 final class ArticlesViewModel: ObservableObject {
+    
+    var locator: ServiceLocator?
+    
+    var settingModel: SettingViewModel
+    @Published private(set) var articles: [ArticleModel] = [ArticleModel]()
+    
     var page = 0
     var totalResults = 0
-
-    var locator: ServiceLocator?
     
     var isShowImages: Bool {
         return settingModel.model.showImages
     }
-    
-    @Published private(set) var articles: [ArticleModel] = [ArticleModel]()
-    
-    var settingModel: SettingViewModel
-    
+
     private var querySubscriber: AnyCancellable? = nil
     private var pageSubscriber: AnyCancellable? = nil
     private var imageSubscriber: AnyCancellable? = nil
@@ -30,7 +30,7 @@ final class ArticlesViewModel: ObservableObject {
     init(locator: ServiceLocator?, settingModel: SettingViewModel) {
         self.locator = locator
         self.settingModel = settingModel
-
+        
         self.subscribe()
     }
     

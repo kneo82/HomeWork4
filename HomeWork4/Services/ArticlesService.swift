@@ -20,6 +20,7 @@ final class ArticlesService {
         switch status {
         case .unknown, .offline:
             ArticleListCache.shared.getArticles(q: q ?? "withoutQuery", pageSize: pageSize, page: page, handler: handler)
+            
         case .online:
             NewsAPI.getNews(apiKey: apiKey, q: q, pageSize: pageSize, page: page) { (news, error) in
                 if let articles = news?.articles {
@@ -27,9 +28,10 @@ final class ArticlesService {
                     
                     handler(result, news?.totalResults ?? 0)
                     ArticleListCache.shared.addArticlesToCache(q: q ?? "withoutQuery", articles: result)
+                    
                 } else if let error = error {
-                  print("News failed with error: \(error.localizedDescription)")
-                  print(error.localizedDescription)
+                    print("News failed with error: \(error.localizedDescription)")
+                    print(error.localizedDescription)
                     handler([ArticleModel](), 0)
                 }
             }

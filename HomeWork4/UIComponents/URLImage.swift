@@ -24,8 +24,8 @@ public struct URLImage: View {
                 .aspectRatio(contentMode: .fit)
         } else {
             return Image(systemName: "photo")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
         }
     }
 }
@@ -53,7 +53,7 @@ final class RemoteImageURL: ObservableObject {
 
 public final class ImageLoader {
     public static let shared = ImageLoader()
-
+    
     private let cache: ImageCacheType
     
     private lazy var backgroundQueue: OperationQueue = {
@@ -61,11 +61,11 @@ public final class ImageLoader {
         queue.maxConcurrentOperationCount = 5
         return queue
     }()
-
+    
     public init(cache: ImageCacheType = ImageCache()) {
         self.cache = cache
     }
-
+    
     public func loadImage(from url: URL) -> AnyPublisher<UIImage?, Never> {
         if let image = cache[url] {
             return Just(image).eraseToAnyPublisher()

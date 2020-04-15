@@ -23,7 +23,7 @@ public final class SettingSaveService {
         guard let filePath = filePath else {
             return
         }
-
+        
         do {
             let data = try JSONEncoder().encode(settings)
             try data.write(to: filePath)
